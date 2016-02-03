@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{46AAF8C6-2AF3-4A19-882E-B47A4BD7D8F6}"
 	ProjectSection(SolutionItems) = preProject
-		C:\Users\Antonio\Documents\Visual Studio 2015\Projects\Ventanas\License.txt = C:\Users\Antonio\Documents\Visual Studio 2015\Projects\Ventanas\License.txt
+		License.txt = License.txt
 	EndProjectSection
 EndProject
 Global
