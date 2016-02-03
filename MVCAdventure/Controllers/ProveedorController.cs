@@ -13,5 +13,10 @@ namespace MVCAdventure.Controllers
         {
             return View();
         }
+
+        public ActionResult GetProveedores()
+        {
+            return View("Proveedor");
+        }
     }
 }
