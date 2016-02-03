@@ -4,4 +4,36 @@
 }
 
 <h2>Proveedor</h2>
+@using EFAdventure
+@model List<Person>
 
+<style>
+    .uno
+    {
+        position: relative;
+        float: left;
+        padding: 50px;
+    }
+    .dos
+    {
+        position: relative;
+        float: left;
+        padding: 50px;
+    }
+</style>
+<h2>Proveedores</h2>
+<div class="uno">
+
+    <ul id="proveedores">
+        @foreach (Person proveedor in Model)
+        {
+            <li id="@proveedor.BusinessEntityID">@proveedor.FirstName + @proveedor.MiddleName + @proveedor.LastName</li>
+        }
+</ul>
+</div>
+
+<div class="dos">
+    <ul id="productos">
+
+    </ul>
+ </div>
