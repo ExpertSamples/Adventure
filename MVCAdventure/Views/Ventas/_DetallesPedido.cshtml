@@ -1,0 +1,74 @@
+﻿
+@using MVCAdventure.Models
+@model List<VentasDetallesModel>
+
+<style>
+    td {
+        padding: 4px;
+    }
+
+    table {
+        margin: 10px;
+        background-color: gainsboro;
+    }
+</style>
+
+<h2>DetalleEquipo</h2>
+
+<div>
+
+
+
+    <table border="1" align="left" display="block">
+        <tr>
+
+            <th>Cliente</th>
+            <td>@ViewBag.cliente</td>
+
+        </tr>
+        <tr>
+
+            <th>Vendedor</th>
+            <td>@ViewBag.vendedor</td>
+
+        </tr>
+        <tr>
+
+            <th>Fecha de Pedido</th>
+            <td>@ViewBag.fecha</td>
+
+        </tr>
+
+    </table>
+
+    <table border="1" align="left">
+
+        <tr>
+
+            <th>Nombre del producto</th>
+
+            <th>Precio por unidad</th>
+
+            <th>Cantidad pedida</th>
+            <th>Cantidad total</th>
+
+        </tr>
+
+        @foreach (VentasDetallesModel productos in Model)
+        {
+            <tr id="@productos.ProductID">
+                <td>@productos.Name</td>
+                <td>@productos.UnitPrice</td>
+                <td>@productos.OrderQty</td>
+                <td>@productos.LineTotal</td>
+            </tr>
+
+
+        }
+    </table>
+
+</div>
+<p>
+
+    @Html.ActionLink("Cerrar", "Equipo")|
+</p>

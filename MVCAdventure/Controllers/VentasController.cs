@@ -11,18 +11,24 @@ namespace MVCAdventure.Controllers
     public class VentasController : Controller
     {
         // GET: Ventas
-        public ActionResult Index()
+         public ActionResult Index()
         {
-            GetFecha(43659);
-            return View("Index");
+           
+            return View();
         }
 
         public ActionResult RevisarPedido(int id)
         {
-
-
-            return PartialView("_DetallesPedido");
+            Person cliente = new Person();
+            cliente = GetCliente(id);
+            ViewBag.cliente = cliente.FirstName + " " + cliente.LastName;
+            Person vendedor = new Person();
+            vendedor = GetVendedor(id);
+            ViewBag.vendedor = vendedor.FirstName + " " + vendedor.LastName;
+            ViewBag.fecha = GetFecha(id);
+            return PartialView("_DetallesPedido", GetProducto(id));
         }
+
 
         private Person GetCliente(int id)
         {
