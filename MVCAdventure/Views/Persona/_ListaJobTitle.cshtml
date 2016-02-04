@@ -1,1 +1,11 @@
-﻿
+﻿@model List<String>
+@{
+    Layout = null;
+}
+
+
+@foreach (String title in Model)
+{
+    <li>@Html.ActionLink(title, "MostrarPersonas", "Persona", new { depId = ViewData["depId"], jobTitle = title }, null)</li>
+}
+
