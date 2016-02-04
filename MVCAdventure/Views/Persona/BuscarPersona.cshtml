@@ -1,6 +1,5 @@
 ﻿@using EFAdventure
-@
-
+@model List<Department>
 @{
     ViewBag.Title = "BuscarPersona";
 }
@@ -18,6 +17,25 @@
 @*TODO hacer la lista por departamentos*@
 <p>Para buscar a un empleado por su Departamentos haga click en un departamento</p>
 <br />
+<div>
+    <ul style="display:inline-block">
+        @foreach (Department departamento in Model)
+        {
+            <li id="@departamento.DepartmentID">@Html.ActionLink(departamento.Name, "MostrarJobTitle", "Persona", new { idDep = departamento.DepartmentID }, null)</li>
+        }
+    </ul>
+</div>
+
+<div>
+    <ul style="display:inline-block">
+        @if (ViewBag.listaJobTitle != null)
+        {
+            List<String> lista = ViewBag.listaJobTitle;
+            ViewData["depId"] = ViewBag.depId;
+            Html.RenderPartial("_ListaJobTitle", lista, ViewData);
+        }
+    </ul>
+</div>
 
 <p>Para añadir a un empleado haga click en Añadir Empleado</p>
 @* TODO hacer el boton de añadir empleado *@
