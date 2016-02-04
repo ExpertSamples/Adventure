@@ -56,7 +56,7 @@ namespace MVCAdventure.Controllers
             contexto.Dispose();
             ViewBag.ID = provID;
 
-            return PartialView("_Productos", ListaProductos);
+            return PartialView("_Producto", ListaProductos);
         }
 
         public ActionResult ModificarProveedor(int negocio)
