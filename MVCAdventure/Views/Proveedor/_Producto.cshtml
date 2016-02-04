@@ -1,1 +1,10 @@
-﻿
+﻿@using EFAdventure
+@model List<Product>
+    <h1>Productos</h1>
+@foreach(Product producto in Model)
+{
+    <li id="@producto.ProductID">@producto.Name</li>
+}
+
+<input id="Mod" type="submit" value="Modificar">
+<input id="Nue" type="submit" value="Nuevo">
