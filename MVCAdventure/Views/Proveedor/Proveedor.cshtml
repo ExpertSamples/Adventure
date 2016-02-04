@@ -27,7 +27,7 @@
     <ul id="proveedores">
         @foreach (Person proveedor in Model)
         {
-            <li id="@proveedor.BusinessEntityID">@proveedor.FirstName + @proveedor.MiddleName + @proveedor.LastName</li>
+            <li id="@proveedor.BusinessEntityID">@proveedor.FirstName @proveedor.MiddleName @proveedor.LastName</li>
         }
 </ul>
 </div>
@@ -38,6 +38,11 @@
     </ul>
  </div>
 
+@section Scripts {
+    @Scripts.Render("~/Scripts/productos.js")
+   
+
+}
 
 <button id="modificaProvedor" type="button" name="Modificar">Modificar</button>
 <button id="modificaProvedor" type="button" name="Crear">Crear</button>

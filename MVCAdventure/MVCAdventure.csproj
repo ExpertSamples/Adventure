@@ -244,6 +244,8 @@
     <Content Include="Views\Persona\BuscarPersona.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Ventas\Index.cshtml" />
+    <Content Include="Views\Proveedor\ModificarProducto.cshtml" />
+    <Content Include="Views\Proveedor\ModificarProveedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

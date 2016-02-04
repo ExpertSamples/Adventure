@@ -45,11 +45,11 @@ namespace MVCAdventure.Controllers
                            select listaproductos.ProductID).Distinct();
 
             ListaID = LHeader.ToList();
-            foreach(int id in ListaID)
+            foreach (int id in ListaID)
             {
                 var producto = (from product in contexto.Product
-                                 where product.ProductID == id
-                                 select product).First();
+                                where product.ProductID == id
+                                select product).First();
                 ListaProductos.Add(producto);
             }
 
@@ -66,16 +66,27 @@ namespace MVCAdventure.Controllers
             var proveedor = (from prov in contexto.Person
                              where prov.BusinessEntityID == negocio
                              select prov).First();
-            persona = (Person)proveedor; 
+            persona = (Person)proveedor;
             contexto.Dispose();
             return View("ModificarProveedor", persona);
         }
 
-        
+        public ActionResult ModificarProducto(int productID)
+        {
+            Product producto;
+            AdventureWorks2014Entities contexto = new AdventureWorks2014Entities();
 
-        //Post: Proveedor
-        [HttpPost]
-        
+            var pro = (from productos in contexto.Product
+                       where productos.ProductID == productID
+                       select productos).First();
+
+            producto = (Product)pro;
+            contexto.Dispose();
+
+            return View("ModificarProducto", producto);
+        }
+
+
+
     }
-
 }
