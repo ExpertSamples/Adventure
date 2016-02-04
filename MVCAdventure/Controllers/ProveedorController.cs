@@ -9,6 +9,7 @@ namespace MVCAdventure.Controllers
 {
     public class ProveedorController : Controller
     {
+
         // GET: Proveedor
         public ActionResult Index()
         {
@@ -36,5 +37,24 @@ namespace MVCAdventure.Controllers
 
             return PartialView("_Productos");
         }
+
+        public ActionResult ModificarProveedor(int negocio)
+        {
+            Person persona;
+            AdventureWorks2014Entities contexto = new AdventureWorks2014Entities();
+            var proveedor = (from prov in contexto.Person
+                             where prov.BusinessEntityID == negocio
+                             select prov).First();
+            persona = (Person)proveedor; 
+            contexto.Dispose();
+            return View("ModificarProveedor", persona);
+        }
+
+        
+
+        //Post: Proveedor
+        [HttpPost]
+        
     }
+
 }
