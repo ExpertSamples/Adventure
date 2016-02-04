@@ -11,17 +11,17 @@ namespace MVCAdventure.Controllers
     public class VentasController : Controller
     {
         // GET: Ventas
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
-            GetFecha(id);
-            return View();
+            GetFecha(43659);
+            return View("Index");
         }
 
-        public ActionResult RevisarPedido()
+        public ActionResult RevisarPedido(int id)
         {
 
 
-            return PartialView("DetallesPedido");
+            return PartialView("_DetallesPedido");
         }
 
         private Person GetCliente(int id)
@@ -62,8 +62,7 @@ namespace MVCAdventure.Controllers
             {
                 var filtro = from ventas in contexto.SalesOrderHeader
                              join detalles in contexto.SalesOrderDetail on ventas.SalesOrderID equals detalles.SalesOrderID
-                             join producto in contexto.Product on detalles.ProductID equals producto.ProductID /*into lista*/
-                             //from ListaProd in lista
+                             join producto in contexto.Product on detalles.ProductID equals producto.ProductID 
                              where ventas.SalesOrderID == id
                              select new { id=producto.ProductID , nombre=producto.Name , unidades=detalles.OrderQty , PrecioUnidad=detalles.UnitPrice  , PrecioTotal=detalles.LineTotal   };
                 foreach (var item in filtro)
