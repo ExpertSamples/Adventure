@@ -243,11 +243,11 @@
     <Content Include="Views\Proveedor\_Producto.cshtml" />
     <Content Include="Views\Persona\BuscarPersona.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
+    <Content Include="Views\Ventas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CrearPersona\" />
-    <Folder Include="Views\Ventas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
