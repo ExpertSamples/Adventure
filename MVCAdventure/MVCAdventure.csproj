@@ -179,6 +179,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VentasDetallesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -217,7 +218,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -241,12 +242,12 @@
     <Content Include="Views\Proveedor\Proveedor.cshtml" />
     <Content Include="Views\Proveedor\_Producto.cshtml" />
     <Content Include="Views\Persona\BuscarPersona.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Proveedor\ModificarProveedor.cshtml" />
+    <Content Include="Views\Persona\Index.cshtml" />
+    <Content Include="Views\Ventas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ventas\" />
+    <Folder Include="Views\CrearPersona\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
