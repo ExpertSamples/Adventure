@@ -31,10 +31,31 @@ namespace MVCAdventure.Controllers
             return View("Proveedor", ListaProveedores);
         }
 
-        public ActionResult GetProductos()
+        public ActionResult GetProductos(int provID)
         {
+            List<Product> ListaProductos = new List<Product>();
+            List<int> ListaID = new List<int>();
+            AdventureWorks2014Entities contexto = new AdventureWorks2014Entities();
 
-            return PartialView("_Productos");
+            var LHeader = (from OrderHeader in contexto.SalesOrderHeader
+                           where OrderHeader.SalesPersonID == provID
+                           join OrderDetail in contexto.SalesOrderDetail on OrderHeader.SalesOrderID equals OrderDetail.SalesOrderID into lista
+                           from listaproductos in lista
+                           select listaproductos.ProductID).Distinct();
+
+            ListaID = LHeader.ToList();
+            foreach(int id in ListaID)
+            {
+                var producto = (from product in contexto.Product
+                                 where product.ProductID == id
+                                 select product).First();
+                ListaProductos.Add(producto);
+            }
+
+            contexto.Dispose();
+            ViewBag.ID = provID;
+
+            return PartialView("_Productos", ListaProductos);
         }
     }
 }
