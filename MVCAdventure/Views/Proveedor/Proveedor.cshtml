@@ -30,19 +30,20 @@
             <li id="@proveedor.BusinessEntityID">@proveedor.FirstName @proveedor.MiddleName @proveedor.LastName</li>
         }
 </ul>
+    <button id="modificaProveedor" type="button" name="Modificar">Modificar</button>
+    <button id="nuevoProveedor" type="button" name="Crear">Crear</button>
 </div>
 
 <div class="dos">
     <ul id="productos">
 
     </ul>
+    <input id="modificarProducto" type="button" value="Modificar">
+    <input id="nuevoProducto" type="button" value="Nuevo">
  </div>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/productos.js")
-   
-
 }
 
-<button id="modificaProvedor" type="button" name="Modificar">Modificar</button>
-<button id="modificaProvedor" type="button" name="Crear">Crear</button>
+
