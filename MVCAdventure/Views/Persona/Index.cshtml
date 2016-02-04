@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@*Boton de modificar empleado*@
+<form >
+    <label>Para buscar un empleado y poder modificarlo pulse Buscar: </label><button type="button" id="Buscar" class="Buscar">@Html.ActionLink("Buscar Empleado", "BuscarPersona", "Persona")</button>
+</form>
+
+
+
+
+@* Boton de añadir empleado *@
+<form >
+    <label>Añadir un nuevo Empleado: </label><button type="button" id="CrearEmpleado" class="CrearEmpleado">@Html.ActionLink("Añadir Empleado", "CrearPersona", "Persona")</button>
+</form>
+
