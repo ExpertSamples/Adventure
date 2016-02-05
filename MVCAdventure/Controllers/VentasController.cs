@@ -29,7 +29,6 @@ namespace MVCAdventure.Controllers
             return PartialView("_DetallesPedido", GetProducto(id));
         }
 
-
         private Person GetCliente(int id)
         {
             Person cliente = null;
