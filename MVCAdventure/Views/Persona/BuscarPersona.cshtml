@@ -6,19 +6,10 @@
 
 <h1>Buscar Persona y Empleado</h1>
 
-@* Text Box de busqueda por BusinessEntityID *@
-
-<p>Para buscar a un empleado por BusinessEntityID haga click en Filtrar por BusinessEntityID</p> <br />
-
-<form method="post">
-    <label>BusinessEntityID</label><input name="BusinessEntityID" id="BusinessEntityID" type="number" value="@ViewBag.BusinessEntityID" /><button type="submit" id="id">Filtrar por BusinessEntityID</button>
-</form>
+<p>Para buscar a un empleado pinche en un departamento y después en un puesto de trabajo</p>
 <br />
-@*TODO hacer la lista por departamentos*@
-<p>Para buscar a un empleado por su Departamentos haga click en un departamento</p>
-<br />
-<div style="display:inline-block">
-    <ul style="display:inline-block">
+<div style="display:inline-block; vertical-align:top;">
+    <ul>
         @foreach (Department departamento in Model)
         {
             <li id="@departamento.DepartmentID">@Html.ActionLink(departamento.Name, "MostrarJobTitle", "Persona", new { depId = departamento.DepartmentID }, null)</li>
@@ -26,7 +17,7 @@
     </ul>
 </div>
 
-<div style="display:inline-block">
+<div style="display:inline-block; vertical-align:top;">
     <ul>
         @if (ViewBag.listaJobTitle != null)
         {
@@ -37,7 +28,7 @@
     </ul>
 </div>
 
-<div style="display:inline-block">
+<div style="display:inline-block; vertical-align:top;">
     <ul>
         @if (ViewBag.listaPersonas != null)
         {
@@ -50,4 +41,5 @@
 </div>
 
 <p>Para añadir a un empleado haga click en Añadir Empleado</p>
+<button>@Html.ActionLink("Añadir Persona","Agregar","Persona", null, null)</button>
 @* TODO hacer el boton de añadir empleado *@
