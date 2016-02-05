@@ -94,6 +94,47 @@ namespace MVCAdventure.Controllers
 
             return View("ModificarProducto", producto);
         }
+
+        [HttpPost]
+        public ActionResult UpdateProducto()
+        {
+            Product producto;
+            int id = int.Parse(HttpContext.Request.Params["ProductID"]);
+
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var productos = from p in contexto.Product
+                               where p.ProductID == id
+                               select p;
+                producto = productos.First();
+
+                producto.Name = HttpContext.Request.Params["Name"];
+                producto.ProductNumber = HttpContext.Request.Params["ProductNumber"];
+                producto.MakeFlag = bool.Parse(HttpContext.Request.Params["MakeFlag"]);             
+                producto.Color = HttpContext.Request.Params["Color"];
+                producto.SafetyStockLevel = short.Parse(HttpContext.Request.Params["SafetyStockLevel"]);
+              
+                producto.Size = HttpContext.Request.Params["Size"];
+             
+                producto.ProductSubcategoryID = int.Parse(HttpContext.Request.Params["ProductSubcategoryID"]);
+                //producto.SellStartDate = DateTime.Parse(HttpContext.Request.Params["SellStartDate"]);
+              //  producto.SellEndDate = DateTime.Parse(HttpContext.Request.Params["SellEndDate"]);
+
+                try
+                {
+                    contexto.SaveChanges();
+                    ViewBag.Error = false;
+                }
+                catch (Exception)
+                {
+                    ViewBag.Error = true;
+                    producto = (from p in contexto.Product
+                                where p.ProductID == id
+                                select p).First();
+                }
+            }
+            return View("ModificarProducto", producto);
+        }
         
         [HttpPost]
         public ActionResult UpdateProveedor()
@@ -136,7 +177,20 @@ namespace MVCAdventure.Controllers
             return View("ModificarProveedor", persona);
         }
 
+        public ActionResult CrearProducto(int productID)
+        {
+            Product producto;
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                //select MAX(ProductID) from Production.Product
+                var pro = (from productos in contexto.Product
+                           select productos).Max();
 
+                producto = (Product)pro;
+            }
+
+            return View("NuevoProducto", producto);
+        }
 
     }
 }
