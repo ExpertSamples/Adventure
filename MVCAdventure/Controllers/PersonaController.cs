@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using EFAdventure;
-
+using MVCAdventure.Models;
 
 namespace MVCAdventure.Controllers
 {
@@ -37,6 +37,20 @@ namespace MVCAdventure.Controllers
             ViewBag.jobTitle = jobTitle;
 
             return View("BuscarPersona", GetListaDepartamentos());
+        }
+
+
+        public ActionResult Modificar(int id)
+        {
+            PersonaDatosEmpleado empleado = new PersonaDatosEmpleado();
+            empleado.BusinessEntityID = id;
+            empleado.GroupName = GetGroupName(id);
+            empleado.JobTitle = GetJobTitle(id);
+            empleado.Name = GetName(id)[0] + " " + GetName(id)[1];
+            empleado.PhoneNumber = GetTelefono(id);
+            empleado.EmailAddress = GetEmail(id);
+
+            return View("ModificarPersona", empleado);
         }
 
         ////////////////////////////////////
