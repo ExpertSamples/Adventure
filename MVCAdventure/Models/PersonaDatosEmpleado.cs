@@ -13,6 +13,7 @@ namespace MVCAdventure.Models
         public string EmailAddress { get; set; }
         public string JobTitle { get; set; }
         public string GroupName { get; set; }
+        public int DepartmentID { get; set; }
 
     }
 }

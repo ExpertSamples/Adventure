@@ -40,15 +40,16 @@ namespace MVCAdventure.Controllers
         }
 
 
-        public ActionResult Modificar(int id)
+        public ActionResult Modificar(int idPersona)
         {
             PersonaDatosEmpleado empleado = new PersonaDatosEmpleado();
-            empleado.BusinessEntityID = id;
-            empleado.GroupName = GetGroupName(id);
-            empleado.JobTitle = GetJobTitle(id);
-            empleado.Name = GetName(id)[0] + " " + GetName(id)[1];
-            empleado.PhoneNumber = GetTelefono(id);
-            empleado.EmailAddress = GetEmail(id);
+            empleado.BusinessEntityID = idPersona;
+            empleado.GroupName = GetGroupName(idPersona);
+            empleado.JobTitle = GetJobTitle(idPersona);
+            empleado.Name = GetName(idPersona)[0] + " " + GetName(idPersona)[1];
+            empleado.PhoneNumber = GetTelefono(idPersona);
+            empleado.EmailAddress = GetEmail(idPersona);
+            empleado.DepartmentID = GetDepartamentoID(idPersona);
 
             return View("ModificarPersona", empleado);
         }
@@ -179,5 +180,20 @@ namespace MVCAdventure.Controllers
             return email;
 
         }
+
+        private int GetDepartamentoID(int id)
+        {
+
+            int departamentoId;
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var depID = from e in contexto.EmployeeDepartmentHistory
+                         where e.BusinessEntityID == id
+                         select e.DepartmentID;
+                departamentoId = depID.First();
+
+            }
+            return departamentoId;
+         }
     }
 }
