@@ -251,6 +251,8 @@
     <Content Include="Views\Persona\AgregarPersona.cshtml" />
     <Content Include="Views\Ventas\_DetallesPedido.cshtml" />
     <Content Include="Views\Proveedor\ModificarProducto.cshtml" />
+    <Content Include="Views\Proveedor\NuevoProveedor.cshtml" />
+    <Content Include="Views\Proveedor\NuevoProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
