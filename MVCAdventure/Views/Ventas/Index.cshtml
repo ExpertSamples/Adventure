@@ -5,6 +5,19 @@
 
 <h2></h2>
 <form method="get" action="~/Ventas/RevisarPedido">
-    <label>Introduce el número de pedido que deseas consultar</label><input name="id" type="number" />
-    <button type="submit">Filtrar</button>
+    <label>Introduce el número de pedido que deseas consultar</label><input name="id" type="number" id="numPedido" />
+    <button type="submit">Ir</button>   
 </form>
+  Filtrar búsqueda:<br />
+    Comercial:<br />
+    Nombre:<input type="text" name="nombre" id="nombre"><br>
+    Apellidos:<input type="text" name="nombre" id="nombre"><br>
+    Desde:<input type="date" name="fechaMin" id="fechaMin"><br>
+    Hasta<input type="date" name="fechaMin" id="fechaHasta">
+    <button type="button">Filtrar</button><br /><br /><br /><br /><br />
+<ul id="pedidos">
+<li id="43662">Prueba de pedido</li>
+</ul>  
+@section Scripts {
+    @Scripts.Render("~/Scripts/ventas.js")
+}
