@@ -255,6 +255,7 @@
     <Content Include="Views\Proveedor\ModificarProducto.cshtml" />
     <Content Include="Views\Proveedor\NuevoProveedor.cshtml" />
     <Content Include="Views\Proveedor\NuevoProducto.cshtml" />
+    <Content Include="Views\Ventas\_ListaFiltro1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
