@@ -5,6 +5,7 @@
     Layout = null;
 }
 
+<h4>Empleados</h4>
 @foreach (Person persona in Model)
 {
     <li>@Html.ActionLink(persona.FirstName + " " + persona.LastName, "Modificar", "Persona", new { idPersona = persona.BusinessEntityID }, null)</li>

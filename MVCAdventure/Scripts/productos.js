@@ -5,7 +5,10 @@ var auxProduct;
 
 
 $(document).ready(function () {
+    
     $("#proveedores").click(function (e) {
+        $("#modificaProveedor").show();
+        $("#nuevoProveedor").show();
         var proveedor = e.target;
         currentSalesPerson = proveedor.id;
         $("#" + auxSalesPerson).css("background-color", "#FFFFFF");
@@ -16,12 +19,15 @@ $(document).ready(function () {
             $("#productos").empty();
             $("#productos").html(data);
         });
+        
     });
 });
 
 
 $(document).ready(function () {
     $("#productos").click(function (e) {
+        $("#modificarProducto").show();
+        $("#nuevoProducto").show();
         var producto = e.target;
         currentProduct = producto.id;
         $("#" + auxProduct).css("background-color", "#FFFFFF");
@@ -30,9 +36,18 @@ $(document).ready(function () {
     });
 });
 
+
 $(document).ready(function () {
-    $("#modificarProducto").click(function (e) {       
+    $("#modificarProducto").click(function (e) {
         var url = document.location.origin + '/Proveedor/ModificarProducto?ProductID=' + currentProduct;
+        window.location = url;
+    });
+});
+
+
+$(document).ready(function () {
+    $("#modificaProveedor").click(function (e) {
+        var url = document.location.origin + '/Proveedor/ModificarProveedor?negocio=' + currentSalesPerson;
         window.location = url;
     });
 });

@@ -245,13 +245,15 @@
     <Content Include="Views\Persona\BuscarPersona.cshtml" />
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Ventas\Index.cshtml" />
-    <Content Include="Views\Proveedor\ModificarProducto.cshtml" />
     <Content Include="Views\Proveedor\ModificarProveedor.cshtml" />
     <Content Include="Views\Persona\_ListaJobTitle.cshtml" />
     <Content Include="Views\Persona\_ListaPersonas.cshtml" />
     <Content Include="Views\Persona\ModificarPersona.cshtml" />
     <Content Include="Views\Persona\AgregarPersona.cshtml" />
     <Content Include="Views\Ventas\_DetallesPedido.cshtml" />
+    <Content Include="Views\Proveedor\ModificarProducto.cshtml" />
+    <Content Include="Views\Proveedor\NuevoProveedor.cshtml" />
+    <Content Include="Views\Proveedor\NuevoProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
