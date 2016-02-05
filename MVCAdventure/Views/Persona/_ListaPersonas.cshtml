@@ -1,1 +1,11 @@
 ﻿
+@using EFAdventure
+@model List<Person>
+@{
+    Layout = null;
+}
+
+@foreach (Person persona in Model)
+{
+    <li>@Html.ActionLink(persona.FirstName + " " + persona.LastName, "Modificar", "Persona", new { idPersona = persona.BusinessEntityID }, null)</li>
+}

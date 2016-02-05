@@ -17,22 +17,34 @@
 @*TODO hacer la lista por departamentos*@
 <p>Para buscar a un empleado por su Departamentos haga click en un departamento</p>
 <br />
-<div>
+<div style="display:inline-block">
     <ul style="display:inline-block">
         @foreach (Department departamento in Model)
         {
-            <li id="@departamento.DepartmentID">@Html.ActionLink(departamento.Name, "MostrarJobTitle", "Persona", new { idDep = departamento.DepartmentID }, null)</li>
+            <li id="@departamento.DepartmentID">@Html.ActionLink(departamento.Name, "MostrarJobTitle", "Persona", new { depId = departamento.DepartmentID }, null)</li>
         }
     </ul>
 </div>
 
-<div>
-    <ul style="display:inline-block">
+<div style="display:inline-block">
+    <ul>
         @if (ViewBag.listaJobTitle != null)
         {
             List<String> lista = ViewBag.listaJobTitle;
             ViewData["depId"] = ViewBag.depId;
             Html.RenderPartial("_ListaJobTitle", lista, ViewData);
+        }
+    </ul>
+</div>
+
+<div style="display:inline-block">
+    <ul>
+        @if (ViewBag.listaPersonas != null)
+        {
+            List<Person> lista1 = ViewBag.listaPersonas;
+            ViewData["depId"] = ViewBag.depId;
+            ViewData["jobTitle"] = ViewBag.jobTitle;
+            Html.RenderPartial("_ListaPersonas", lista1, ViewData);
         }
     </ul>
 </div>
