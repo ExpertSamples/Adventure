@@ -58,6 +58,8 @@ namespace MVCAdventure.Controllers
         {
             return View("AgregarPersona");
         }
+
+       
         ////////////////////////////////////
         // CONSULTAS DE ENTITY FRAMEWORK //
         //////////////////////////////////
@@ -199,5 +201,7 @@ namespace MVCAdventure.Controllers
             }
             return departamentoId;
          }
+
+        }
     }
 }
