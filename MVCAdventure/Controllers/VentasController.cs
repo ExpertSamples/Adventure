@@ -29,6 +29,23 @@ namespace MVCAdventure.Controllers
             return PartialView("_DetallesPedido", GetProducto(id));
         }
 
+        public ActionResult FiltroPedidos(string name, string lastName, DateTime inicio, DateTime final)
+        {
+            List<int> listaID = new List<int>();
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var id = (from vendedor in contexto.Person
+                          where (vendedor.FirstName == name && vendedor.LastName == lastName)
+                          select vendedor.BusinessEntityID).First();
+
+                var listaProductos = (from sales in contexto.SalesOrderHeader
+                                      where (sales.SalesPersonID == id && sales.OrderDate >= inicio && sales.OrderDate <= final)
+                                      select sales.SalesOrderID);
+                listaID = listaProductos.ToList();
+            }
+            return PartialView("Index", listaID);
+        }
+
         private Person GetCliente(int id)
         {
             Person cliente = null;
