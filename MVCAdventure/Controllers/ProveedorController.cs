@@ -62,12 +62,21 @@ namespace MVCAdventure.Controllers
         public ActionResult ModificarProveedor(int negocio)
         {
             Person persona;
+            SalesPerson salesPerson;
             AdventureWorks2014Entities contexto = new AdventureWorks2014Entities();
             var proveedor = (from prov in contexto.Person
                              where prov.BusinessEntityID == negocio
                              select prov).First();
             persona = (Person)proveedor;
+
+            var salesP = from prov in contexto.SalesPerson
+                         where prov.BusinessEntityID == negocio
+                         select prov;
+            salesPerson = salesP.First();
+
             contexto.Dispose();
+
+            ViewBag.salesPerson = salesPerson;
             return View("ModificarProveedor", persona);
         }
 
@@ -84,6 +93,47 @@ namespace MVCAdventure.Controllers
             contexto.Dispose();
 
             return View("ModificarProducto", producto);
+        }
+        
+        [HttpPost]
+        public ActionResult UpdateProveedor()
+        {
+            Person persona;
+            int id = int.Parse(HttpContext.Request.Params["BusinessEntityID"]);
+
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var proveedor = from prov in contexto.Person
+                                where prov.BusinessEntityID == id
+                                select prov;
+                persona = proveedor.First();
+
+                persona.PersonType = HttpContext.Request.Params["PersonType"];
+                persona.NameStyle = bool.Parse(HttpContext.Request.Params["NameStyle"]);
+                persona.Title = HttpContext.Request.Params["Title"];
+                persona.FirstName = HttpContext.Request.Params["FirstName"];
+                persona.LastName = HttpContext.Request.Params["LastName"];
+                persona.MiddleName = HttpContext.Request.Params["MiddleName"];
+                persona.Suffix = HttpContext.Request.Params["Suffix"];
+                persona.EmailPromotion = int.Parse(HttpContext.Request.Params["EmailPromotion"]);
+                persona.AdditionalContactInfo = HttpContext.Request.Params["AdditionalContactInfo"];
+                persona.ModifiedDate = DateTime.Now;
+
+                try
+                {
+                    contexto.SaveChanges();
+                    ViewBag.error = false;
+                }
+                catch(Exception e)
+                {
+                    ViewBag.error = true;
+                    persona = (from prov in contexto.Person
+                              where prov.BusinessEntityID == id
+                              select prov).First();
+                }
+            }
+
+            return View("ModificarProveedor", persona);
         }
 
 
