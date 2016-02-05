@@ -10,6 +10,7 @@
 <br />
 <div style="display:inline-block; vertical-align:top;">
     <ul>
+        <h4>Departamentos</h4>
         @foreach (Department departamento in Model)
         {
             <li id="@departamento.DepartmentID">@Html.ActionLink(departamento.Name, "MostrarJobTitle", "Persona", new { depId = departamento.DepartmentID }, null)</li>
@@ -18,6 +19,7 @@
 </div>
 
 <div style="display:inline-block; vertical-align:top;">
+    
     <ul>
         @if (ViewBag.listaJobTitle != null)
         {
@@ -29,6 +31,7 @@
 </div>
 
 <div style="display:inline-block; vertical-align:top;">
+   
     <ul>
         @if (ViewBag.listaPersonas != null)
         {

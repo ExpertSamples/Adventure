@@ -93,6 +93,77 @@ namespace MVCAdventure.Controllers
 
             return listaPersonas;
         }
-        
+
+        private string GetGroupName(int id)
+        {
+            string groupname;
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var grupo = from d in contexto.Department
+                            join e in contexto.EmployeeDepartmentHistory on d.DepartmentID equals e.DepartmentID
+                            where e.BusinessEntityID == id
+                            select d.GroupName;
+                groupname = grupo.First();
+            }
+            return groupname;
+        }
+        private string GetJobTitle(int id)
+        {
+            string jobtitle;
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var job = from e in contexto.Employee
+                          where e.BusinessEntityID == id
+                          select e.JobTitle;
+                jobtitle = job.First();
+            }
+            return jobtitle;
+        }
+
+        private List<string> GetName(int id)
+        {
+            List<string> names = new List<string>();
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var nombres = from p in contexto.Person
+                              where p.BusinessEntityID == id
+                              select p.FirstName;
+
+                names.Add(nombres.First());
+                
+                var apellido = from p in contexto.Person
+                               where p.BusinessEntityID == id
+                               select p.LastName;
+
+                names.Add(apellido.First());
+            }
+            return names;
+        }
+        private string GetTelefono(int id)
+        {
+            string telefono;
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var tele=from p in contexto.PersonPhone
+                         where p.BusinessEntityID == id
+                         select p.PhoneNumber;
+                telefono = tele.First();
+            }
+
+            return telefono;
+        }
+        private string GetEmail(int id)
+        {
+            string email;
+            using (AdventureWorks2014Entities contexto = new AdventureWorks2014Entities())
+            {
+                var correo=from p in contexto.EmailAddress
+                           where p.BusinessEntityID == id
+                           select p.EmailAddress1;
+                email = correo.First();
+            }
+            return email;
+
+        }
     }
 }

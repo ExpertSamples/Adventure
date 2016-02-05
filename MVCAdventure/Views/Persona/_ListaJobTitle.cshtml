@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-
+<h4>Jobtitle</h4>
 @foreach (String title in Model)
 {
     <li>@Html.ActionLink(title, "MostrarPersonas", "Persona", new { depId = ViewData["depId"], jobTitle = title }, null)</li>
