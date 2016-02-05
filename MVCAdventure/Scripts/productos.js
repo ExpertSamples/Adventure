@@ -30,9 +30,18 @@ $(document).ready(function () {
     });
 });
 
+
 $(document).ready(function () {
-    $("#modificarProducto").click(function (e) {       
+    $("#modificarProducto").click(function (e) {
         var url = document.location.origin + '/Proveedor/ModificarProducto?ProductID=' + currentProduct;
+        window.location = url;
+    });
+});
+
+
+$(document).ready(function () {
+    $("#modificaProveedor").click(function (e) {
+        var url = document.location.origin + '/Proveedor/ModificarProveedor?negocio=' + currentSalesPerson;
         window.location = url;
     });
 });
