@@ -43,7 +43,7 @@ namespace MVCAdventure.Controllers
                                       select sales.SalesOrderID);
                 listaID = listaProductos.ToList();
             }
-            return PartialView("Index", listaID);
+            return PartialView("_ListaFiltro1", listaID);
         }
 
         private Person GetCliente(int id)

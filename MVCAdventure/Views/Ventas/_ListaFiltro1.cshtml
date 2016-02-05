@@ -1,7 +1,8 @@
 ﻿@using EFAdventure
 @model List<int>
+    Pedidos:
 @foreach (int IDorden in Model)
 {
-    <li id="IDorden">IDorden</li>
+    <li id="@IDorden">@IDorden</li>
 }
 
