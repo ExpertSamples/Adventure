@@ -54,6 +54,10 @@ namespace MVCAdventure.Controllers
             return View("ModificarPersona", empleado);
         }
 
+        public ActionResult AgregarPersona()
+        {
+            return View("AgregarPersona");
+        }
         ////////////////////////////////////
         // CONSULTAS DE ENTITY FRAMEWORK //
         //////////////////////////////////
